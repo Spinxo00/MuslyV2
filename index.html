@@ -133,22 +133,142 @@
         <div class="tab-content" id="libraryTab">
             <!-- Library -->
             <div class="library-section">
-                <h3 class="section-title">Your Library</h3>
-                <div class="library-stats">
-                    <div class="stat-card">
-                        <h4 id="totalSongs">0</h4>
-                        <p>Songs</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4 id="totalPlaylists">0</h4>
-                        <p>Playlists</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4 id="totalTime">0h</h4>
-                        <p>Listening Time</p>
+                <div class="library-nav">
+                    <button class="library-tab-btn active" data-library="overview">Overview</button>
+                    <button class="library-tab-btn" data-library="liked">Liked Songs</button>
+                    <button class="library-tab-btn" data-library="history">History</button>
+                    <button class="library-tab-btn" data-library="settings">Settings</button>
+                </div>
+                
+                <!-- Overview -->
+                <div class="library-content active" id="library-overview">
+                    <h3 class="section-title">Your Library</h3>
+                    <div class="library-stats">
+                        <div class="stat-card">
+                            <h4 id="totalSongs">0</h4>
+                            <p>Songs</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4 id="totalPlaylists">0</h4>
+                            <p>Playlists</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4 id="totalTime">0h</h4>
+                            <p>Listening Time</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4 id="totalLiked">0</h4>
+                            <p>Liked Songs</p>
+                        </div>
                     </div>
                 </div>
-                <div class="library-content" id="libraryContent"></div>
+                
+                <!-- Liked Songs -->
+                <div class="library-content" id="library-liked">
+                    <div class="liked-header">
+                        <h3 class="section-title">Liked Songs</h3>
+                        <div class="liked-actions">
+                            <button class="icon-btn" id="playAllLiked" title="Play All">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 3L19 12L5 21V3Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <button class="icon-btn" id="shuffleLiked" title="Shuffle Play">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 17L8 12L3 7M16 7L21 12L16 17M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="liked-songs-list" id="likedSongsList"></div>
+                </div>
+                
+                <!-- History -->
+                <div class="library-content" id="library-history">
+                    <div class="history-header">
+                        <h3 class="section-title">Listening History</h3>
+                        <button class="icon-btn" id="clearHistory" title="Clear History">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="history-list" id="historyList"></div>
+                </div>
+                
+                <!-- Settings -->
+                <div class="library-content" id="library-settings">
+                    <h3 class="section-title">Settings</h3>
+                    <div class="settings-container">
+                        <!-- Theme Settings -->
+                        <div class="settings-group">
+                            <h4>Appearance</h4>
+                            <div class="setting-item">
+                                <label>Theme</label>
+                                <select id="themeSelect" class="setting-select">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="auto">Auto</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label>Accent Color</label>
+                                <div class="color-picker">
+                                    <button class="color-dot" data-theme-color="#FF6B6B" style="background: #FF6B6B;"></button>
+                                    <button class="color-dot" data-theme-color="#4ECDC4" style="background: #4ECDC4;"></button>
+                                    <button class="color-dot" data-theme-color="#667eea" style="background: #667eea;"></button>
+                                    <button class="color-dot" data-theme-color="#764ba2" style="background: #764ba2;"></button>
+                                    <button class="color-dot" data-theme-color="#f093fb" style="background: #f093fb;"></button>
+                                    <button class="color-dot" data-theme-color="#f5576c" style="background: #f5576c;"></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Playback Settings -->
+                        <div class="settings-group">
+                            <h4>Playback</h4>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="autoplayToggle">
+                                    <span>Autoplay next track</span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="crossfadeToggle">
+                                    <span>Crossfade tracks</span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>Default Volume</label>
+                                <input type="range" id="defaultVolume" min="0" max="100" value="70">
+                                <span id="volumeValue">70%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Management -->
+                        <div class="settings-group">
+                            <h4>Data Management</h4>
+                            <div class="setting-item">
+                                <button class="setting-btn" id="exportData">Export Data</button>
+                                <button class="setting-btn" id="importData">Import Data</button>
+                                <input type="file" id="importFile" accept=".json" style="display: none;">
+                            </div>
+                            <div class="setting-item">
+                                <button class="setting-btn danger" id="clearAllData">Clear All Data</button>
+                            </div>
+                        </div>
+                        
+                        <!-- About -->
+                        <div class="settings-group">
+                            <h4>About</h4>
+                            <div class="setting-item">
+                                <p>Musly v2.0</p>
+                                <p class="text-muted">A modern music player for YouTube</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -233,6 +353,18 @@
                         <path d="M17 1L21 5L17 9M3 11V9C3 7.89543 3.89543 7 5 7H21M7 23L3 19L7 15M21 13V15C21 16.1046 20.1046 17 19 17H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
+                <!-- Volume Control -->
+                <div class="volume-control">
+                    <button class="icon-btn" id="volumeBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19.07 4.93C20.9447 6.80528 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="volume-slider-container">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
