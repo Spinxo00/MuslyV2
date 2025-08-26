@@ -1,7 +1,7 @@
 {
-  "name": "music-stream-app",
-  "version": "1.0.0",
-  "description": "Music streaming web app",
+  "name": "harmony-music-app",
+  "version": "2.0.0",
+  "description": "Modern iOS-style music streaming app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,7 +15,8 @@
     "ytdl-core": "^4.11.5",
     "youtube-search-api": "^1.2.1",
     "spotify-web-api-node": "^5.0.2",
-    "compression": "^1.7.4"
+    "compression": "^1.7.4",
+    "node-cache": "^5.1.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
