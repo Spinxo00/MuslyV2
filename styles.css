@@ -1183,3 +1183,334 @@ body {
         opacity: 0;
     }
 }
+
+/* Library Navigation */
+.library-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.library-tab-btn {
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.library-tab-btn.active {
+    color: var(--accent-color);
+}
+
+.library-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.library-content {
+    display: none;
+}
+
+.library-content.active {
+    display: block;
+}
+
+/* Liked Songs */
+.liked-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.liked-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.liked-songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.liked-song-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--surface-color);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.liked-song-item:hover {
+    background: var(--hover-color);
+    transform: translateX(4px);
+}
+
+.liked-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.liked-info {
+    flex: 1;
+}
+
+.liked-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.liked-channel {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.liked-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* History */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.history-group {
+    margin-bottom: 2rem;
+}
+
+.history-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: var(--surface-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: var(--hover-color);
+}
+
+.history-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.25rem;
+    object-fit: cover;
+}
+
+.history-info {
+    flex: 1;
+}
+
+.history-title {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.history-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Settings */
+.settings-container {
+    max-width: 600px;
+}
+
+.settings-group {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--surface-color);
+    border-radius: 1rem;
+}
+
+.settings-group h4 {
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0.75rem 0;
+}
+
+.setting-item label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.setting-select {
+    padding: 0.5rem 1rem;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.color-picker {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-dot:hover,
+.color-dot.selected {
+    border-color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.setting-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.setting-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.setting-btn.danger {
+    background: #ff4444;
+}
+
+/* Volume Control */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.volume-slider-container {
+    width: 100px;
+}
+
+#volumeSlider {
+    width: 100%;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Theme Support */
+.theme-light {
+    --background: #ffffff;
+    --surface-color: #f5f5f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --hover-color: #f0f0f0;
+}
+
+.theme-dark {
+    --background: #1a1a1a;
+    --surface-color: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --border-color: #333333;
+    --hover-color: #333333;
+}
+
+/* Small button variant */
+.icon-btn.small {
+    width: 32px;
+    height: 32px;
+    padding: 0.5rem;
+}
+
+.icon-btn.small svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.liked-song-item,
+.history-item {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
