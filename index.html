@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Musly - Your Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="15" stroke="url(#gradient1)" stroke-width="2"/>
+                        <path d="M12 10V22L22 16L12 10Z" fill="url(#gradient1)"/>
+                        <defs>
+                            <linearGradient id="gradient1" x1="0" y1="0" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#FF6B6B"/>
+                                <stop offset="100%" stop-color="#4ECDC4"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Musly</span>
+                </div>
+                <button class="menu-btn" id="menuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search for songs, artists..." class="search-input">
+                <button class="search-btn" id="searchBtn">Search</button>
+            </div>
+        </div>
+
+        <!-- Now Playing -->
+        <div class="now-playing" id="nowPlaying">
+            <div class="album-art" id="albumArt">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" rx="20" fill="url(#gradient2)"/>
+                    <path d="M40 35V65L65 50L40 35Z" fill="white" opacity="0.8"/>
+                    <defs>
+                        <linearGradient id="gradient2" x1="0" y1="0" x2="100" y2="100">
+                            <stop offset="0%" stop-color="#667eea"/>
+                            <stop offset="100%" stop-color="#764ba2"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="track-info">
+                <h2 id="trackTitle">Welcome to Musly</h2>
+                <p id="trackArtist">Search for your favorite music</p>
+            </div>
+            <div class="progress-container">
+                <span class="time" id="currentTime">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <span class="time" id="duration">0:00</span>
+            </div>
+            <div class="controls">
+                <button class="control-btn" id="shuffleBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 17L8 12L3 7M16 7L21 12L16 17M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="control-btn" id="prevBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 12L9 6V18L19 12Z" fill="currentColor"/>
+                        <rect x="7" y="6" width="2" height="12" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button class="control-btn play-btn" id="playBtn">
+                    <svg class="play-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="currentColor"/>
+                        <path d="M12 10V22L22 16L12 10Z" fill="white"/>
+                    </svg>
+                    <svg class="pause-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" style="display:none;">
+                        <circle cx="16" cy="16" r="16" fill="currentColor"/>
+                        <rect x="11" y="10" width="3" height="12" fill="white"/>
+                        <rect x="18" y="10" width="3" height="12" fill="white"/>
+                    </svg>
+                </button>
+                <button class="control-btn" id="nextBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12L15 6V18L5 12Z" fill="currentColor"/>
+                        <rect x="15" y="6" width="2" height="12" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button class="control-btn" id="repeatBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M17 1L21 5L17 9M3 11V9C3 7.89543 3.89543 7 5 7H21M7 23L3 19L7 15M21 13V15C21 16.1046 20.1046 17 19 17H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <h3 class="section-title">Search Results</h3>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+
+        <!-- Playlist Section -->
+        <div class="playlist-section">
+            <h3 class="section-title">Queue</h3>
+            <div class="playlist" id="playlist">
+                <!-- Playlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <div id="youtube-player"></div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
