@@ -2,134 +2,282 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Wave - Music Streaming</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ffffff">
+    <title>Harmony - Premium Music Experience</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/ios-style.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div id="app">
-        <!-- Splash Screen -->
-        <div id="splash-screen" class="splash-screen">
-            <div class="splash-content">
-                <div class="logo-animation">
-                    <svg viewBox="0 0 100 100" class="wave-logo">
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2"/>
-                        <path d="M30 50 Q40 30, 50 50 T70 50" stroke="url(#gradient)" stroke-width="3" fill="none" class="wave-path"/>
-                        <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+    <div id="app" class="app-container">
+        
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <div class="app-icon">
+                    <i class="bi bi-music-note-beamed"></i>
                 </div>
-                <h1 class="splash-title">Wave</h1>
-                <p class="splash-subtitle">Music Everywhere</p>
+                <h1 class="loading-title">Harmony</h1>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
             </div>
         </div>
 
         <!-- Main App -->
         <div id="main-app" class="main-app hidden">
-            <!-- Header -->
-            <header class="app-header">
-                <div class="header-content">
-                    <h1 class="app-title">Wave</h1>
-                    <button class="menu-btn" id="menuBtn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+            
+            <!-- iOS Style Navigation Bar -->
+            <nav class="ios-nav">
+                <div class="nav-blur"></div>
+                <div class="nav-content">
+                    <div class="nav-left">
+                        <button class="nav-button" id="menuBtn">
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </div>
+                    <div class="nav-center">
+                        <h1 class="nav-title">Harmony</h1>
+                    </div>
+                    <div class="nav-right">
+                        <button class="nav-button" id="searchToggle">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </header>
-
-            <!-- Source Selector -->
-            <div class="source-selector">
-                <button class="source-btn active" data-source="youtube">
-                    <svg class="source-icon" viewBox="0 0 24 24">
-                        <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
-                    </svg>
-                    YouTube
-                </button>
-                <button class="source-btn" data-source="spotify">
-                    <svg class="source-icon" viewBox="0 0 24 24">
-                        <path d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25m-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1m-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/>
-                    </svg>
-                    Spotify
-                </button>
-                <button class="source-btn" data-source="soundcloud">
-                    <svg class="source-icon" viewBox="0 0 24 24">
-                        <path d="M11.56 8.87V17h8.76c1.85 0 3.35-1.5 3.35-3.35 0-1.85-1.5-3.35-3.35-3.35-.19 0-.37.02-.55.05-.47-2.36-2.54-4.14-5.03-4.14-1.71 0-3.25.9-4.09 2.27-.29-.09-.59-.14-.91-.14-1.56 0-2.83 1.27-2.83 2.83 0 .31.05.61.14.88-.79.56-1.32 1.48-1.32 2.52 0 1.71 1.39 3.1 3.1 3.1h.21V8.87c0-.31.25-.56.56-.56s.56.25.56.56z"/>
-                    </svg>
-                    SoundCloud
-                </button>
-            </div>
+            </nav>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search for music...">
-                <button id="searchBtn" class="search-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
-                    </svg>
+            <div class="search-section" id="searchSection">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" 
+                               id="searchInput" 
+                               class="search-input" 
+                               placeholder="Search for artists, songs, or albums..."
+                               autocomplete="off">
+                        <button class="search-clear hidden" id="searchClear">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </button>
+                    </div>
+                    <button class="search-cancel" id="searchCancel">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Source Pills -->
+            <div class="source-section">
+                <div class="source-scroll">
+                    <button class="source-pill active" data-source="itunes">
+                        <i class="bi bi-apple"></i>
+                        <span>iTunes</span>
+                    </button>
+                    <button class="source-pill" data-source="deezer">
+                        <i class="bi bi-music-note-list"></i>
+                        <span>Deezer</span>
+                    </button>
+                    <button class="source-pill" data-source="youtube">
+                        <i class="bi bi-youtube"></i>
+                        <span>YouTube</span>
+                    </button>
+                    <button class="source-pill" data-source="spotify">
+                        <i class="bi bi-spotify"></i>
+                        <span>Spotify</span>
+                    </button>
+                    <button class="source-pill" data-source="soundcloud">
+                        <i class="bi bi-cloud-fill"></i>
+                        <span>SoundCloud</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="action-card" id="chartsBtn">
+                    <div class="action-icon gradient-1">
+                        <i class="bi bi-fire"></i>
+                    </div>
+                    <span>Top Charts</span>
+                </button>
+                <button class="action-card" id="newBtn">
+                    <div class="action-icon gradient-2">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <span>New Music</span>
+                </button>
+                <button class="action-card" id="genresBtn">
+                    <div class="action-icon gradient-3">
+                        <i class="bi bi-grid-3x3-gap"></i>
+                    </div>
+                    <span>Genres</span>
+                </button>
+                <button class="action-card" id="playlistsBtn">
+                    <div class="action-icon gradient-4">
+                        <i class="bi bi-collection-play"></i>
+                    </div>
+                    <span>Playlists</span>
                 </button>
             </div>
 
-            <!-- Results Container -->
-            <div id="resultsContainer" class="results-container"></div>
-
-            <!-- Player -->
-            <div id="player" class="player hidden">
-                <div class="player-backdrop"></div>
-                <div class="player-content">
-                    <div class="player-album-art">
-                        <img id="playerThumbnail" src="" alt="Album Art">
-                        <div class="vinyl-spin"></div>
-                    </div>
-                    <div class="player-info">
-                        <h3 id="playerTitle" class="player-title">Song Title</h3>
-                        <p id="playerArtist" class="player-artist">Artist</p>
-                    </div>
-                    <div class="player-progress">
-                        <span id="currentTime" class="time">0:00</span>
-                        <input type="range" id="progressBar" class="progress-bar" value="0" max="100">
-                        <span id="duration" class="time">0:00</span>
-                    </div>
-                    <div class="player-controls">
-                        <button id="prevBtn" class="control-btn">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M6,18V6H8V18H6M9.5,12L18,6V18L9.5,12Z"/>
-                            </svg>
-                        </button>
-                        <button id="playPauseBtn" class="control-btn play-btn">
-                            <svg id="playIcon" viewBox="0 0 24 24">
-                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
-                            </svg>
-                            <svg id="pauseIcon" viewBox="0 0 24 24" class="hidden">
-                                <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
-                            </svg>
-                        </button>
-                        <button id="nextBtn" class="control-btn">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M16,18H18V6H16M6,18L14.5,12L6,6V18Z"/>
-                            </svg>
+            <!-- Content Section -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title" id="sectionTitle">Discover</h2>
+                    <button class="section-action" id="sectionAction">See All</button>
+                </div>
+                
+                <div id="resultsContainer" class="results-container">
+                    <!-- Welcome Screen -->
+                    <div class="welcome-screen">
+                        <div class="welcome-icon">
+                            <i class="bi bi-music-note-beamed"></i>
+                        </div>
+                        <h2>Welcome to Harmony</h2>
+                        <p>Search for your favorite music or explore top charts</p>
+                        <button class="cta-button" id="exploreBtn">
+                            <i class="bi bi-compass"></i>
+                            Explore Music
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Audio Element -->
-            <audio id="audioPlayer" preload="metadata"></audio>
+            <!-- Mini Player -->
+            <div id="miniPlayer" class="mini-player hidden">
+                <div class="mini-player-content">
+                    <img class="mini-thumbnail" id="miniThumbnail" src="" alt="">
+                    <div class="mini-info">
+                        <div class="mini-title" id="miniTitle">Song Title</div>
+                        <div class="mini-artist" id="miniArtist">Artist</div>
+                    </div>
+                    <button class="mini-play-btn" id="miniPlayBtn">
+                        <i class="bi bi-play-fill" id="miniPlayIcon"></i>
+                        <i class="bi bi-pause-fill hidden" id="miniPauseIcon"></i>
+                    </button>
+                </div>
+                <div class="mini-progress">
+                    <div class="mini-progress-bar" id="miniProgressBar"></div>
+                </div>
+            </div>
+
+            <!-- Full Player -->
+            <div id="fullPlayer" class="full-player">
+                <div class="player-header">
+                    <button class="player-dismiss" id="playerDismiss">
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="player-header-title">Now Playing</div>
+                    <button class="player-more">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                </div>
+
+                <div class="player-artwork">
+                    <img id="playerArtwork" src="" alt="" class="artwork-image">
+                    <div class="artwork-shadow"></div>
+                </div>
+
+                <div class="player-details">
+                    <div class="player-title" id="playerTitle">Song Title</div>
+                    <div class="player-artist" id="playerArtist">Artist Name</div>
+                </div>
+
+                <div class="player-progress-section">
+                    <div class="progress-container">
+                        <input type="range" 
+                               id="progressSlider" 
+                               class="progress-slider" 
+                               min="0" 
+                               max="100" 
+                               value="0">
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    <div class="progress-time">
+                        <span id="currentTime">0:00</span>
+                        <span id="totalTime">0:00</span>
+                    </div>
+                </div>
+
+                <div class="player-controls">
+                    <button class="control-button" id="shuffleBtn">
+                        <i class="bi bi-shuffle"></i>
+                    </button>
+                    <button class="control-button large" id="prevBtn">
+                        <i class="bi bi-skip-backward-fill"></i>
+                    </button>
+                    <button class="control-button primary" id="playPauseBtn">
+                        <i class="bi bi-play-fill" id="playIcon"></i>
+                        <i class="bi bi-pause-fill hidden" id="pauseIcon"></i>
+                    </button>
+                    <button class="control-button large" id="nextBtn">
+                        <i class="bi bi-skip-forward-fill"></i>
+                    </button>
+                    <button class="control-button" id="repeatBtn">
+                        <i class="bi bi-repeat"></i>
+                    </button>
+                </div>
+
+                <div class="player-extra">
+                    <button class="extra-button">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="extra-button">
+                        <i class="bi bi-share"></i>
+                    </button>
+                    <button class="extra-button">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <div class="tab-bar-blur"></div>
+                <div class="tab-bar-content">
+                    <button class="tab-item active" data-tab="home">
+                        <i class="bi bi-house-fill"></i>
+                        <span>Home</span>
+                    </button>
+                    <button class="tab-item" data-tab="search">
+                        <i class="bi bi-search"></i>
+                        <span>Search</span>
+                    </button>
+                    <button class="tab-item" data-tab="library">
+                        <i class="bi bi-collection"></i>
+                        <span>Library</span>
+                    </button>
+                    <button class="tab-item" data-tab="profile">
+                        <i class="bi bi-person-fill"></i>
+                        <span>Profile</span>
+                    </button>
+                </div>
+            </div>
         </div>
+
+        <!-- Audio Element -->
+        <audio id="audioPlayer" preload="metadata"></audio>
     </div>
 
+    <!-- Scripts -->
     <script src="js/app.js"></script>
     <script src="js/player.js"></script>
     <script src="js/search.js"></script>
-    <script src="js/animations.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>
