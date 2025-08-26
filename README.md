@@ -28,10 +28,10 @@ A beautiful, iOS-styled music player with YouTube integration, built with vanill
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/musly.git
+git clone https://github.com/Spinxo00/MuslyV2.git
 
 # Navigate to project directory
-cd musly
+cd MuslyV2
 
 # Install dependencies
 npm install
