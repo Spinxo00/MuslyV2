@@ -1,0 +1,22 @@
+{
+  "name": "Demus Music Player",
+  "short_name": "Demus",
+  "description": "iOS-themed PWA music player with Audius, YouTube, and SoundCloud",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%23000'/><circle cx='256' cy='256' r='150' fill='none' stroke='%23fff' stroke-width='20'/><path d='M256 156 v200 l100-50' fill='%23fff'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["music", "entertainment"],
+  "prefer_related_applications": false,
+  "scope": "/",
+  "lang": "en-US"
+}
