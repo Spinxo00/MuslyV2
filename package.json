@@ -1,19 +1,23 @@
 {
-  "name": "musly-backend",
+  "name": "musly",
   "version": "1.0.0",
-  "description": "Backend service for Musly music player",
+  "description": "Modern iOS-styled music player with YouTube integration",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "build": "echo 'No build step required'"
+    "dev": "nodemon server.js"
   },
+  "keywords": [
+    "music",
+    "player",
+    "youtube",
+    "ios",
+    "streaming"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "googleapis": "^118.0.0",
-    "ytdl-core": "^4.11.5",
-    "dotenv": "^16.0.3"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
