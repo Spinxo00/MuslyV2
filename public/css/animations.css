@@ -1,4 +1,5 @@
-@keyframes pulse {
+/* Keyframe Animations */
+@keyframes pulse-scale {
     0%, 100% {
         transform: scale(1);
     }
@@ -7,137 +8,178 @@
     }
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+@keyframes loading-slide {
+    0% {
+        transform: translateX(-100%);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+        transform: translateX(400%);
     }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         opacity: 0;
     }
     to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
         opacity: 1;
     }
 }
 
 @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
     to {
         transform: rotate(360deg);
     }
 }
 
-@keyframes waveAnimation {
-    0%, 100% {
-        d: path("M30 50 Q40 30, 50 50 T70 50");
-    }
-    50% {
-        d: path("M30 50 Q40 70, 50 50 T70 50");
-    }
+/* Transition Classes */
+.fade-in {
+    animation: fade-in 0.3s ease-out;
 }
 
-.wave-path {
-    animation: waveAnimation 3s ease-in-out infinite;
+.slide-up {
+    animation: slide-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-@keyframes vinylSpin {
-    to {
-        transform: rotate(360deg);
-    }
+.slide-down {
+    animation: slide-down 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.vinyl-spin {
-    animation: vinylSpin 3s linear infinite;
+.bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Ripple Effect */
-@keyframes ripple {
-    to {
-        transform: scale(1.5);
-        opacity: 0;
-    }
+/* Interactive States */
+.touchable {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(0);
-    animation: ripple 0.6s;
+.touchable:active {
+    transform: scale(0.95);
+    opacity: 0.7;
 }
 
-/* Skeleton Loading */
-@keyframes skeleton {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
+/* Loading States */
 .skeleton {
     background: linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 100%
+        var(--system-gray-5) 0%,
+        var(--system-gray-4) 50%,
+        var(--system-gray-5) 100%
     );
     background-size: 200% 100%;
-    animation: skeleton 1.5s ease-in-out infinite;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
 }
 
-/* Bounce Animation */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.bounce {
-    animation: bounce 2s ease-in-out infinite;
-}
-
-/* Gradient Animation */
-@keyframes gradientShift {
+@keyframes skeleton-loading {
     0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
+        background-position: 200% 0;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: -200% 0;
     }
 }
 
-.animated-gradient {
-    background: linear-gradient(270deg, var(--primary), var(--secondary), var(--primary));
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Page Transitions */
-.page-enter {
-    animation: slideInUp 0.5s ease-out;
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
-.page-exit {
-    animation: fadeOut 0.3s ease-out;
+.ripple:active::before {
+    width: 300px;
+    height: 300px;
 }
 
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
+/* Hover Effects */
+@media (hover: hover) {
+    .hoverable {
+        transition: all 0.3s ease;
+    }
+    
+    .hoverable:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Smooth Scroll */
+.smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Spring Animation */
+.spring {
+    animation: spring 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes spring {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
     }
 }
