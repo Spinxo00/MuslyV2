@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/demus-pwa/main/.github/assets/logo.svg" alt="Demus Logo" width="120" height="120">
+  <img src="https://raw.githubusercontent.com/Spinxo00/musly/main/.github/assets/logo.svg" alt="Musly Logo" width="120" height="120">
   
-  # **Demus** 🎵
+  # **Musly** 🎵
   
   ### *An iOS-Inspired PWA Music Player*
   
@@ -104,7 +104,7 @@
   
   <br>
   
-  ### **🔗 [Try Live Demo](https://demus-pwa.onrender.com)**
+  ### **🔗 [Try Live Demo](https://musly.onrender.com/)**
   
   <sub>Works best on iPhone Safari & Chrome/Edge desktop</sub>
 </div>
